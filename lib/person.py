@@ -16,4 +16,31 @@ APPROVED_JOBS = [
 ]
 
 class Person:
+    def __init__(self ,name,job ):
+        self._name=name
+        self._job=job
+
+    def set_name(self, name):
+        if isinstance(name, str) and len(name) < 25:
+            self._name = name
+
+    def get_name(self):
+        return self._name  
+
+    name = property(get_name, set_name)
+
+
+    def set_job(self, job):
+        if job in self.approved_jobs:
+            self._job = job
+        else:
+            print("Job must be in list of approved jobs.")
+
+    def get_job(self):
+        return self._job
+
+    job = property(get_job, set_job)
     pass
+john=Person("john","Admin")
+print(john.name)
+print(john.job)
